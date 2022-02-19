@@ -1,21 +1,25 @@
 import datetime
 import time
 
+from PIL import Image, ImageFont, ImageDraw
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+
+now = datetime.datetime.utcnow() + datetime.timedelta(hours=9)
 
 options = Options()
 options.add_argument('--headless')
 web_driver = webdriver.Chrome(options=options)
 
-# 野迫川ライブカメラ
-url_nosegawa = 'https://www.komadori.ne.jp/nara-livecamera/area/nosegawa1.html'
+url = 'https://www.komadori.ne.jp/nara-livecamera/area/nosegawa1.html'
+web_driver.get(url)
+time.sleep(3)
+web_driver.save_screenshot('image.png')
+web_driver.quit()
+time.sleep(1)
 
-web_driver.get(url_nosegawa)
-
-time.sleep(5)
-
-now = datetime.datetime.utcnow() + datetime.timedelta(hours=9)
-now_str = now.strftime('%Y%m%d_%H')
-
-web_driver.save_screenshot(f'data/{now_str}.png')
+img = Image.open('image.png')
+draw  = ImageDraw.Draw(img)
+font = ImageFont.truetype('NotoSansJP-Light.otf', 45)
+draw.text((780, 140), now.strftime('%Y/%m/%d %H:%M'), (255, 0, 0), font=font)
+img.save(f"data/{now.strftime('%Y%m%d_%H')}.png")
