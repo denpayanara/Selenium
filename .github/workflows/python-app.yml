@@ -10,6 +10,8 @@ jobs:
         with:
           python-version: '3.9'
           architecture: 'x64'
+      - name: Install font
+        run: sudo apt install fonts-ipafont
       - run: |
           pip install get-chrome-driver --upgrade
           pip install -r requirements.txt
@@ -27,3 +29,4 @@ jobs:
             git commit -m "ファイル更新" -a
             git push
           fi
+          
