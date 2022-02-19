@@ -1,6 +1,8 @@
 name: selenium-github-actions
 
-on: [push]
+on:
+  workflow_dispatch:
+
 jobs:
   selenium:
     runs-on: ubuntu-latest
