@@ -32,10 +32,10 @@ jobs:
         git config --local user.name "GitHub Action"
     - name: Commit files
       run: |
-        git add -N .
+        git add -N data
         if ! git diff --exit-code --quiet
         then
-          git add .
+          git add data
           git commit -m "ファイル更新" -a
           git push
         fi
