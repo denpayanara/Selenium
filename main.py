@@ -15,4 +15,4 @@ web_driver.get(url_nosegawa)
 now = datetime.datetime.utcnow() + datetime.timedelta(hours=9)
 now_str = now.strftime('%Y%m%d_%H')
 
-web_driver.save_screenshot(f'{now_str}.png')
+web_driver.save_screenshot(f'data/{now_str}.png')
