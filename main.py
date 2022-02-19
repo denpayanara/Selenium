@@ -1,4 +1,5 @@
 import datetime
+import time
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -11,6 +12,8 @@ web_driver = webdriver.Chrome(options=options)
 url_nosegawa = 'https://www.komadori.ne.jp/nara-livecamera/area/nosegawa1.html'
 
 web_driver.get(url_nosegawa)
+
+time.sleep(5)
 
 now = datetime.datetime.utcnow() + datetime.timedelta(hours=9)
 now_str = now.strftime('%Y%m%d_%H')
