@@ -7,22 +7,22 @@ jobs:
   selenium:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: '3.9'
-          architecture: 'x64'
-      - name: Install dependencies
-        run: |
-          pip install get-chrome-driver --upgrade
-          pip install -r requirements.txt
-      - name: Run script
-        run: |
-          python main.py
-      - name: git setting
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+        architecture: 'x64'
+    - name: Install dependencies
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        pip install get-chrome-driver --upgrade
+        pip install -r requirements.txt
+    - name: Run script
+      run: |
+        python main.py
+    - name: git setting
+    run: |
+      git config --local user.email "action@github.com"
+      git config --local user.name "GitHub Action"
     - name: Commit files
       run: |
         git add -N .
