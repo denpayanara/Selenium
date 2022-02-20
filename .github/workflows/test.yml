@@ -1,0 +1,32 @@
+# GitHub リポジトリの Actions ページで表示されるワークフローの名前です。お好きなものに変えてください。
+name: test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  # ジョブの名前です。お好きな(ry
+  build-and-upload:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Upload to Google Drive
+      uses: satackey/action-google-drive@v1
+      with:
+        # ${{ secrets.登録した名前 }} で secret の内容を参照できます。
+        # トークンの作成・GitHub への登録 で登録した文字列を参照しています。
+        skicka-tokencache-json: ${{ secrets.SKICKA_TOKENCACHE_JSON }}
+
+        # アップロードするディレクトリを指定します。
+        upload-from: ./data
+
+        # アップロード先のフォルダを指定します。
+        # 1つ前のステップの実行結果を参照しています。
+        upload-to: /upload/dir/
+
+        # # skickaにログインできなかった人向け
+        # # Google の Client ID, Secret を GitHub の Secrets に、
+        # # SKICKA_TOKENCACHE_JSON と同様の手順で、以下のように名前を変更して登録してください。
+        # google-client-id: ${{ secrets.GOOGLE_CLIENT_ID }}
+        # google-client-secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
