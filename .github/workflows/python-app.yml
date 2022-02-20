@@ -3,9 +3,9 @@ name: Python application
 
 on:
   workflow_dispatch:
-  schedule:
+  #schedule:
   # 日本時間の午前5時、6時、7時に設定
-    - cron: '0 20,21,22 * * *'
+  #  - cron: '0 20,21,22 * * *'
     
 jobs:
   selenium:
@@ -31,10 +31,12 @@ jobs:
       uses: satackey/action-google-drive@v1
       with:
         skicka-tokencache-json: ${{ secrets.SKICKA_TOKENCACHE_JSON }}
+        upload-from: data
+        upload-to: /path/to/upload/dir/${{ steps.extract_branch.outputs.branch }}
         # # skickaにログインできなかった人向け
         # # Google の Client ID, Secret を GitHub の Secrets に、
         # # SKICKA_TOKENCACHE_JSON と同様の手順で、以下のように名前を変更して登録してください。
         google-client-id: ${{ secrets.GOOGLE_CLIENT_ID }}
         google-client-secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-        upload-from: data
-        upload-to: /path/to/upload/dir/${{ steps.extract_branch.outputs.branch }}
+
+
