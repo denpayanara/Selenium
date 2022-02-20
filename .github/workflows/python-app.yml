@@ -1,3 +1,4 @@
+# Selenium
 name: Python application
 
 on:
@@ -26,17 +27,9 @@ jobs:
     - name: Run script
       run: |
         python main.py
-    - name: git setting
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-    - name: Commit files
-      run: |
-        git add -N data
-        if ! git diff --exit-code --quiet
-        then
-          git add data
-          git commit -m "ファイル更新" -a
-          git push
-        fi
-          
+    - name: Upload to Google Drive
+      uses: satackey/action-google-drive@v1
+      with:
+        skicka-tokencache-json: ${{ secrets.SKICKA_TOKENCACHE_JSON }}
+        upload-from: data
+        upload-to: /path/to/upload/dir/${{ steps.extract_branch.outputs.branch }}
