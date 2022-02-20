@@ -3,9 +3,9 @@ name: Python application
 
 on:
   workflow_dispatch:
-  schedule:
+  #schedule:
   # 日本時間の午前5時、6時、7時に設定
-    - cron: '0 20,21,22 * * *'
+  #  - cron: '0 20,21,22 * * *'
     
 jobs:
   selenium:
