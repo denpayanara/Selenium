@@ -32,10 +32,7 @@ jobs:
       with:
         skicka-tokencache-json: ${{ secrets.SKICKA_TOKENCACHE_JSON }}
         upload-from: data
-        upload-to: /upload/dir/
-        # # skickaにログインできなかった人向け
-        # # Google の Client ID, Secret を GitHub の Secrets に、
-        # # SKICKA_TOKENCACHE_JSON と同様の手順で、以下のように名前を変更して登録してください。
+        upload-to: /nosegawa/
         google-client-id: ${{ secrets.GOOGLE_CLIENT_ID }}
         google-client-secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
 
