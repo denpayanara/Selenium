@@ -11,7 +11,7 @@ options = Options()
 options.add_argument('--headless')
 web_driver = webdriver.Chrome(options=options)
 
-url = 'https://www.komadori.ne.jp/nara-livecamera/area/nosegawa1.html'
+url = ''
 web_driver.get(url)
 time.sleep(3)
 web_driver.save_screenshot('image.png')
